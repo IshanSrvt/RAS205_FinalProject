@@ -44,21 +44,27 @@ The algorithm follows a greedy approach:
 
 ---
 
-## ⚙️ How It Works
+## ⚙️ How It Works (Flowchart)
+
+```mermaid
 flowchart TD
     A[Start] --> B[Store Task List]
-    B --> C[Find Max Deadline]
+    B --> C[Find Maximum Deadline]
     C --> D[Create Empty Schedule]
-    D --> E[Sort Tasks by Profit]
-    E --> F[Pick Highest Profit Task]
-    F --> G{Slot Available?}
-    G -->|Yes| H[Assign Task]
-    G -->|No| I[Move Backward]
-    I --> G
-    H --> J[Next Task]
-    J --> K[All Tasks Done?]
-    K -->|No| F
-    K -->|Yes| L[Print Schedule + Profit]
+    D --> E[Sort Tasks by Profit Descending]
+    E --> F[Select Next Task]
+    F --> G{Deadline > 0?}
+    G -->|No| F
+    G -->|Yes| H[Find Latest Free Slot]
+    H --> I{Slot Available?}
+    I -->|Yes| J[Assign Task to Slot]
+    I -->|No| K[Move Backward]
+    K --> I
+    J --> L[Add Profit]
+    L --> M{More Tasks?}
+    M -->|Yes| F
+    M -->|No| N[Print Schedule & Total Profit]
+    N --> O[End] 
 
 TaskScheduler
 │
