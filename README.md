@@ -43,6 +43,7 @@ The algorithm follows a greedy approach:
 4. Repeat for remaining tasks  
 
 ---
+
 ## ⚙️ How It Works (Flowchart)
 
 ```mermaid
@@ -52,17 +53,17 @@ flowchart TD
     C --> D[Create Empty Schedule]
     D --> E[Sort Tasks by Profit Descending]
     E --> F[Select Next Task]
-    F --> G{Deadline > 0?}
+    F --> G{Is Deadline > 0?}
     G -->|No| F
-    G -->|Yes| H[Find Latest Free Slot]
-    H --> I{Slot Available?}
+    G -->|Yes| H[Set Last Slot = min(deadline, max_deadline)]
+    H --> I{Is Slot Free?}
     I -->|Yes| J[Assign Task to Slot]
-    I -->|No| K[Move Backward]
+    I -->|No| K[Move to Previous Slot]
     K --> I
     J --> L[Add Profit]
     L --> M{More Tasks?}
     M -->|Yes| F
-    M -->|No| N[Print Schedule & Total Profit]
+    M -->|No| N[Print Schedule and Total Profit]
     N --> O[End]
 
 TaskScheduler
