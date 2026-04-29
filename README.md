@@ -44,27 +44,55 @@ The algorithm follows a greedy approach:
 
 ---
 
-## ⚙️ How It Works (Flowchart)
+## ⚙️ How It Works
 
-```mermaid
-flowchart TD
-    A[Start] --> B[Store Task List]
-    B --> C[Find Maximum Deadline]
-    C --> D[Create Empty Schedule]
-    D --> E[Sort Tasks by Profit Descending]
-    E --> F[Select Next Task]
-    F --> G{Is Deadline > 0?}
-    G -->|No| F
-    G -->|Yes| H[Set Last Slot = min(deadline, max_deadline)]
-    H --> I{Is Slot Free?}
-    I -->|Yes| J[Assign Task to Slot]
-    I -->|No| K[Move to Previous Slot]
-    K --> I
-    J --> L[Add Profit]
-    L --> M{More Tasks?}
-    M -->|Yes| F
-    M -->|No| N[Print Schedule and Total Profit]
-    N --> O[End]
+The scheduler follows a greedy approach to maximize profit. Here’s how the process runs step by step:
+
+### 1. Initialization
+- The program takes a list of tasks  
+- Each task has: **Task ID, Deadline, Profit**  
+- It finds the **maximum deadline** to decide timeline size  
+- Creates an empty schedule filled with `"Free"`  
+
+---
+
+### 2. Sorting Tasks
+- Tasks are sorted in **descending order of profit**  
+- Highest profit tasks are considered first  
+
+---
+
+### 3. Scheduling Tasks (Core Logic)
+For each task:
+- Check its deadline  
+- Try placing it in the **latest possible slot before the deadline**  
+- If that slot is occupied:
+  - Move **backward** to find a free slot  
+- If a free slot is found:
+  - Assign the task  
+  - Add its profit  
+
+---
+
+### 4. Handling Edge Cases
+- Tasks with **deadline ≤ 0** are ignored  
+- If no slots are available → task is skipped  
+
+---
+
+### 5. Final Output
+- Print the **initial empty schedule**  
+- Print the **final scheduled timeline**  
+- Display the **total profit earned**  
+
+---
+
+### 💡 Key Idea
+
+Instead of filling early slots first, the algorithm:
+> places each task as **late as possible**
+
+This keeps earlier slots open for other tasks and helps maximize total profit.
 
 TaskScheduler
 │
