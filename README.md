@@ -43,9 +43,9 @@ The algorithm follows a greedy approach:
 4. Repeat for remaining tasks  
 
 ---
-
 ## ⚙️ How It Works (Flowchart)
 
+```mermaid
 flowchart TD
     A[Start] --> B[Store Task List]
     B --> C[Find Maximum Deadline]
