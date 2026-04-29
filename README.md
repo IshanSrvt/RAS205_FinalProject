@@ -46,7 +46,6 @@ The algorithm follows a greedy approach:
 
 ## ⚙️ How It Works (Flowchart)
 
-```mermaid
 flowchart TD
     A[Start] --> B[Store Task List]
     B --> C[Find Maximum Deadline]
@@ -64,7 +63,7 @@ flowchart TD
     L --> M{More Tasks?}
     M -->|Yes| F
     M -->|No| N[Print Schedule & Total Profit]
-    N --> O[End] 
+    N --> O[End]
 
 TaskScheduler
 │
