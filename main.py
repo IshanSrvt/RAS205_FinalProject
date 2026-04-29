@@ -1,75 +1,63 @@
 '''
 RAS205 Final Project
 Dynamic Task Scheduler for Smart Manufacturing
-Team: Write your team name here
+Team members: Ishan Srivastava, Aadi Kadam, Jared Chapman, Sara Doyle, Sakiya Mason, Becks
 '''
 
-'''
-Ishan did this part: created the TaskScheduler class and stored the task list.
-'''
+''' Sakiya: created the TaskScheduler class and started the system '''
 class TaskScheduler:
 
-    '''
-    Ishan did this part: this function starts the object with the given tasks.
-    '''
+
+    ''' Sakiya: stores the task list and finds the max deadline '''
     def __init__(self, tasks):
         self.tasks = tasks
+        self.max_deadline = self.find_max_deadline()
 
-    '''
-    Aadi did this part: this function makes an empty timeline using max deadline.
-    '''
-    def make_empty_schedule(self):
+    ''' Sakiya: finds the biggest deadline from all tasks '''
+    def find_max_deadline(self):
         if len(self.tasks) == 0:
+            return 0
+
+        return max(task[1] for task in self.tasks)
+
+    ''' Sakiya: makes an empty timeline using max deadline '''
+    def make_empty_schedule(self):
+        if self.max_deadline <= 0:
             return []
 
-        max_deadline = max(task[1] for task in self.tasks)
+        return ["Free"] * self.max_deadline
 
-        if max_deadline <= 0:
-            return []
-
-        return ["Free"] * max_deadline
-
-    '''
-    Aadi did this part: this function prints the schedule in a simple way.
-    '''
+    ''' Jared: this function prints the schedule clearly '''
     def print_schedule(self, schedule):
         for i in range(len(schedule)):
             print("Time Slot", i + 1, ":", schedule[i])
 
-    '''
-    Ishan and Aadi did this part: this function schedules tasks using greedy method.
-    '''
+    ''' Aadi: sorts tasks by highest profit first '''
+    def sort_tasks(self):
+        return sorted(self.tasks, key=lambda x: x[2], reverse=True)
+
+    ''' Ishan: schedules tasks using greedy method '''
     def schedule_tasks(self):
         schedule = self.make_empty_schedule()
         total_profit = 0
 
-        '''
-        Sort tasks by highest profit first.
-        '''
-        sorted_tasks = sorted(self.tasks, key=lambda x: x[2], reverse=True)
+        ''' Aadi: prepared the sorted task list for scheduling '''
+        sorted_tasks = self.sort_tasks()
 
-        '''
-        Try to place each task in the latest free slot before its deadline.
-        '''
+        ''' Ishan: checks each task and tries to place it before its deadline '''
         for task in sorted_tasks:
             task_id = task[0]
             deadline = task[1]
             profit = task[2]
 
-            '''
-            Skip task if deadline is not valid.
-            '''
+            ''' Sara: handles invalid deadline edge case '''
             if deadline <= 0:
                 continue
 
-            '''
-            Start from the last possible slot for this task.
-            '''
+            ''' Ishan: starts from the latest possible time slot '''
             last_slot = min(deadline, len(schedule)) - 1
 
-            '''
-            Move backward until a free slot is found.
-            '''
+            ''' Ishan: moves backward until a free slot is found '''
             for i in range(last_slot, -1, -1):
                 if schedule[i] == "Free":
                     schedule[i] = task_id
@@ -78,9 +66,7 @@ class TaskScheduler:
 
         return total_profit, schedule
 
-    '''
-    Ishan did this part: this function runs and prints the full result.
-    '''
+    ''' Jared: prints the initial schedule, final schedule, and total profit '''
     def show_result(self):
         empty_schedule = self.make_empty_schedule()
 
@@ -100,9 +86,7 @@ class TaskScheduler:
             print("Total Profit:", total_profit)
 
 
-'''
-Aadi did this part: this function runs one test case.
-'''
+''' Sara: runs one test case and helps verify output '''
 def run_case(case_name, tasks):
     print()
     print(case_name)
@@ -112,9 +96,7 @@ def run_case(case_name, tasks):
     scheduler.show_result()
 
 
-'''
-Original problem task list.
-'''
+''' Becks: combined the original problem input into the final code file '''
 original_tasks = [
     ("T1", 5, 35),
     ("T2", 3, 30),
@@ -125,9 +107,7 @@ original_tasks = [
     ("T7", 5, 50)
 ]
 
-'''
-Test case A: no conflicts.
-'''
+''' Sara: test case A checks no conflict case '''
 test_a = [
     ("T1", 3, 15),
     ("T2", 2, 20),
@@ -135,9 +115,7 @@ test_a = [
     ("T4", 1, 10)
 ]
 
-'''
-Test case B: conflicting deadlines.
-'''
+''' Sara: test case B checks conflicting deadline case '''
 test_b = [
     ("T1", 4, 20),
     ("T2", 1, 10),
@@ -145,18 +123,14 @@ test_b = [
     ("T4", 1, 30)
 ]
 
-'''
-Test case C: infeasible scheduling.
-'''
+''' Sara: test case C checks infeasible scheduling case '''
 test_c = [
     ("T1", 0, 25),
     ("T2", 0, 15)
 ]
 
 
-'''
-Ishan and Aadi did this part: running original problem and all test cases.
-'''
+''' Becks: final integration runs original problem and all test cases '''
 run_case("Original Problem", original_tasks)
 run_case("Test Case A: No Conflicts", test_a)
 run_case("Test Case B: Conflicting Deadlines", test_b)
