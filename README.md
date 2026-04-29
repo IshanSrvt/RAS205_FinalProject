@@ -146,7 +146,7 @@ TaskScheduler
 
 ---
 
-### 🟧 Becks — Documentation & Integration
+### 🟧 Becky Baker — Documentation & Integration
 - Explained algorithm and approach  
 - Combined all parts into final code  
 - Prepared README and report  
