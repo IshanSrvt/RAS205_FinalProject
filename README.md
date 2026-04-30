@@ -24,8 +24,8 @@
 
 A smart manufacturing plant must schedule tasks where:
 
-- Each task has a **deadline** ⏳  
-- Each task gives a **profit** 💰  
+- Each task has a **deadline**   
+- Each task gives a **profit**   
 - Only **one task per time slot** is allowed  
 
 ###  Goal:
