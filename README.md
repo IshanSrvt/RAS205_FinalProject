@@ -1,4 +1,4 @@
-# 🚀 Dynamic Task Scheduler for Smart Manufacturing  
+# Dynamic Task Scheduler for Smart Manufacturing  
 ### Greedy Algorithm | RAS205 Final Project  
 
 <p align="center">
@@ -7,7 +7,7 @@
 
 ---
 
-## 👥 Team
+## Team
 
 | Name | Role |
 |------|------|
@@ -20,7 +20,7 @@
 
 ---
 
-## 📌 Problem Statement
+##  Problem Statement
 
 A smart manufacturing plant must schedule tasks where:
 
@@ -28,12 +28,12 @@ A smart manufacturing plant must schedule tasks where:
 - Each task gives a **profit** 💰  
 - Only **one task per time slot** is allowed  
 
-### 🎯 Goal:
+###  Goal:
 Maximize total profit while completing tasks **before deadlines**
 
 ---
 
-## 🧠 Algorithm Strategy: Greedy
+##  Algorithm Strategy: Greedy
 
 The algorithm follows a greedy approach:
 
@@ -87,7 +87,7 @@ For each task:
 
 ---
 
-### 💡 Key Idea
+### Key Idea
 
 Instead of filling early slots first, the algorithm:
 > places each task as **late as possible**
@@ -104,9 +104,9 @@ TaskScheduler
 ├── print_schedule()        → display output
 └── show_result()           → final result
 
-## 👨‍💻 Contributions
+##  Contributions
 
-### 🟦 Sakiya Mason — Initialization & Setup
+### Sakiya Mason — Initialization & Setup
 - Created the `TaskScheduler` class  
 - Implemented `__init__` method  
 - Stored task list (task_id, deadline, profit)  
@@ -115,14 +115,14 @@ TaskScheduler
 
 ---
 
-### 🟩 Aadi Kadam — Sorting Logic
+### Aadi Kadam — Sorting Logic
 - Sorted tasks in descending order of profit  
 - Used Python sorting (`sorted()`)  
 - Prepared task list for greedy scheduling  
 
 ---
 
-### 🟥 Ishan Srivastava — Core Algorithm
+### Ishan Srivastava — Core Algorithm
 - Implemented greedy scheduling logic  
 - Assigned tasks to latest valid slots  
 - Handled backward slot searching  
@@ -130,7 +130,7 @@ TaskScheduler
 
 ---
 
-### 🟨 Jared Chapman — Output & Formatting
+### Jared Chapman — Output & Formatting
 - Printed initial empty schedule  
 - Displayed final scheduled timeline  
 - Calculated total profit  
@@ -138,7 +138,7 @@ TaskScheduler
 
 ---
 
-### 🟪 Sara Doyle — Testing & Debugging
+### Sara Doyle — Testing & Debugging
 - Created all required test cases  
 - Verified correctness of outputs  
 - Handled edge cases (e.g., deadline = 0)  
@@ -146,7 +146,7 @@ TaskScheduler
 
 ---
 
-### 🟧 Becky Baker — Documentation & Integration
+### Becky Baker — Documentation & Integration
 - Explained algorithm and approach  
 - Combined all parts into final code  
 - Prepared README and report  
